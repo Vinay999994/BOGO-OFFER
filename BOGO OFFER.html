@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple BOGO Offer</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      background: #fff;
+      cursor: pointer;
+    }
+    .box.selected {
+      background-color: #e0e0e0;
+      border-color: #999;
+    }
+    .dropdowns {
+      display: none;
+      margin-top: 10px;
+    }
+    .dropdowns select {
+      margin: 5px 0;
+    }
+    .summary {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    button {
+      padding: 10px;
+      background-color: black;
+      color: white;
+      border: none;
+      width: 100%;
+    }
+  
+    .popular {
+      background-color: gold;
+      color: black;
+      padding: 2px 6px;
+      margin-left: 10px;
+      font-size: 12px;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+    </style>
+    
+</head>
+<body>
+  <h2>BOGO Offer</h2>
+
+  <div class="box" onclick="selectBox(this)">
+    <input type="radio" name="unit"> 1 Unit - $10 <span style="color: green; font-size: 12px;">(10% OFF)</span>
+    <div class="dropdowns">
+      <div>
+        Size: <select><option>S</option><option>M</option><option>L</option><option>XL</option></select>
+        Color: <select><option>Black</option><option>Red</option><option>Blue</option><option>Green</option></select>
+      </div>
+    </div>
+  </div>
+
+  <div class="box selected" onclick="selectBox(this)">
+    <input type="radio" name="unit" checked> 2 Units - $18 <span class="popular">Most Popular</span> <span style="color: green; font-size: 12px;">(Buy 1 Get 1)</span>
+    <div class="dropdowns" style="display: block;">
+      <div>
+        #1 Size: <select><option>S</option><option>M</option><option>L</option><option>XL</option></select>
+        Color: <select><option>Black</option><option>Red</option><option>Blue</option><option>Green</option></select>
+      </div>
+      <div>
+        #2 Size: <select><option>S</option><option>M</option><option>L</option><option>XL</option></select>
+        Color: <select><option>Red</option></select>
+      </div>
+    </div>
+  </div>
+
+  <div class="box" onclick="selectBox(this)">
+    <input type="radio" name="unit"> 3 Units - $24 <span style="color: green; font-size: 12px;">(30% OFF)</span>
+    <div class="dropdowns">
+      <div>
+        #1 Size: <select><option>S</option><option>M</option><option>L</option><option>XL</option></select>
+        Color: <select><option>Black</option><option>Red</option><option>Blue</option><option>Green</option></select>
+      </div>
+      <div>
+        #2 Size: <select><option>S</option><option>M</option><option>L</option><option>XL</option></select>
+        Color: <select><option>Red</option></select>
+      </div>
+      <div>
+        #3 Size: <select><option>S</option><option>M</option><option>L</option><option>XL</option></select>
+        Color: <select><option>Blue</option></select>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary">Total: $18</div>
+  <button>Add to Cart</button>
+
+  <script>
+    function selectBox(box) {
+      document.querySelectorAll('.box').forEach(b => {
+        b.classList.remove('selected');
+        b.querySelector('.dropdowns').style.display = 'none';
+        b.querySelector('input[type="radio"]').checked = false;
+      });
+      box.classList.add('selected');
+      box.querySelector('.dropdowns').style.display = 'block';
+      box.querySelector('input[type="radio"]').checked = true;
+    }
+  </script>
+</body>
+</html>
