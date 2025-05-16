@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BOGO Offer</title>
+  <style>
+    :root {
+      --primary: #4da6ff;
+      --primary-hover: #3593f3;
+      --light-bg: #ffffff;
+      --card-bg: #f9f9f9;
+      --selected-bg: #e9f5ff;
+      --border: #e0e0e0;
+      --text-dark: #333;
+      --text-soft: #444;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: var(--text-soft);
+      font-size: 24px;
+    }
+
+    .option-card {
+      border: 2px solid var(--border);
+      background-color: var(--card-bg);
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    .option-card.selected {
+      border-color: var(--primary);
+      background-color: var(--selected-bg);
+    }
+
+    .option-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 16px;
+    }
+
+    .popular-badge {
+      background-color: #ffe599;
+      color: #5c5c5c;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .offer-highlight {
+      color: #3fa85f;
+      font-size: 12px;
+      font-weight: bold;
+      margin-top: 6px;
+    }
+
+    .dropdowns {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.4s ease;
+      margin-top: 0;
+    }
+
+    .dropdowns.show {
+      max-height: 500px;
+      opacity: 1;
+      transform: translateY(0);
+      margin-top: 15px;
+    }
+
+    .dropdowns select {
+      margin-top: 10px;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: #fff;
+      font-size: 14px;
+    }
+
+    .summary {
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 30px;
+      color: var(--text-soft);
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      margin-top: 20px;
+      background-color: var(--primary);
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: var(--primary-hover);
+    }
+
+    @media screen and (max-width: 480px) {
+      body {
+        padding: 16px;
+      }
+
+      .option-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .dropdowns select {
+        font-size: 15px;
+        padding: 12px;
+      }
+
+      .summary {
+        font-size: 16px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Select Your BOGO Offer</h2>
+
+    <div class="option-card" onclick="selectBox(this, 10)">
+      <div class="option-header">
+        <label><input type="radio" name="unit"> 1 Unit - $10</label>
+        <span class="offer-highlight">(10% OFF)</span>
+      </div>
+      <div class="dropdowns">
+        Size: <select><option>S</option><option>M</option><option>L</option><option>XL</option></select>
+        Color: <select><option>Black</option><option>Red</option><option>Blue</option></select>
+      </div>
+    </div>
+
+    <div class="option-card selected" onclick="selectBox(this, 18)">
+      <div class="option-header">
+        <label><input type="radio" name="unit" checked> 2 Units - $18</label>
+        <span class="popular-badge">Most Popular</span>
+      </div>
+      <div class="offer-highlight">(Buy 1 Get 1)</div>
+      <div class="dropdowns show">
+        #1 Size: <select><option>S</option><option>M</option><option>L</option><option>XL</option></select>
+        Color: <select><option>Black</option><option>Red</option><option>Blue</option></select><br/>
+        #2 Size: <select><option>S</option><option>M</option><option>L</option><option>XL</option></select>
+        Color: <select><option>Black</option><option>Red</option><option>Blue</option></select>
+      </div>
+    </div>
+
+    <div class="option-card" onclick="selectBox(this, 24)">
+      <div class="option-header">
+        <label><input type="radio" name="unit"> 3 Units - $24</label>
+        <span class="offer-highlight">(30% OFF)</span>
+      </div>
+      <div class="dropdowns">
+        #1 Size: <select><option>S</option><option>M</option><option>L</option><option>XL</option></select>
+        Color: <select><option>Black</option><option>Red</option><option>Blue</option></select><br/>
+        #2 Size: <select><option>S</option><option>M</option><option>L</option><option>XL</option></select>
+        Color: <select><option>Black</option><option>Red</option><option>Blue</option></select><br/>
+        #3 Size: <select><option>S</option><option>M</option><option>L</option><option>XL</option></select>
+        Color: <select><option>Black</option><option>Red</option><option>Blue</option></select>
+      </div>
+    </div>
+
+    <div class="summary">Total: $18</div>
+    <button>Add to Cart</button>
+  </div>
+
+  <script>
+    function selectBox(box, price) {
+      document.querySelectorAll('.option-card').forEach(card => {
+        card.classList.remove('selected');
+        card.querySelector('.dropdowns').classList.remove('show');
+        card.querySelector('input[type="radio"]').checked = false;
+      });
+
+      box.classList.add('selected');
+      box.querySelector('.dropdowns').classList.add('show');
+      box.querySelector('input[type="radio"]').checked = true;
+      document.querySelector('.summary').textContent = "Total: $" + price;
+    }
+  </script>
+</body>
+</html>
